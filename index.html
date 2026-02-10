@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,13 +15,11 @@
             --texture-opacity: 0.8;
             --smoke-grey: rgba(255, 255, 255, 0.05);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             background-color: var(--noir-black);
             color: var(--off-white);
@@ -30,14 +27,12 @@
             overflow-x: hidden;
             line-height: 1.4;
         }
-
         h1,
         h2,
         h3 {
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
         }
-
         section {
             min-height: 100vh;
             display: flex;
@@ -45,7 +40,6 @@
             padding: 4rem 2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         /* ACT I: THE COUP */
         #act-1 {
             background: linear-gradient(90deg, #000 40%, #050505 100%);
@@ -54,45 +48,31 @@
             align-items: center;
             gap: 4rem;
         }
-
         .portrait-container {
             position: relative;
             height: 80vh;
             overflow: hidden;
             box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.8);
         }
-
         .portrait-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             filter: grayscale(100%) contrast(120%) brightness(80%);
         }
-
         .content-block {
             padding-right: 2rem;
         }
-
         .headline {
             font-size: clamp(4rem, 10vw, 8rem);
             color: var(--safety-orange);
             line-height: 0.85;
             margin-bottom: 2rem;
         }
-
         /* DIRTY TEXT EFFECT */
         .dirty-text {
-            -webkit-mask-image: url('texture.png');
-            mask-image: url('texture.png');
-            -webkit-mask-mode: luminance;
-            mask-mode: luminance;
-            -webkit-mask-size: cover;
-            mask-size: cover;
-            -webkit-mask-position: center;
-            mask-position: center;
             transform: rotate(-1deg) !important;
         }
-
         .narrative {
             font-size: 1.5rem;
             max-width: 600px;
@@ -100,12 +80,10 @@
             font-weight: 400;
             color: #aaa;
         }
-
         .narrative b {
             color: var(--off-white);
             font-weight: 700;
         }
-
         .stake-alert {
             background: var(--caution-red);
             color: white;
@@ -116,7 +94,6 @@
             letter-spacing: 1px;
             transform: skew(-5deg);
         }
-
         /* ACT II: THE PERJURY */
         #act-2 {
             background-size: cover;
@@ -129,7 +106,6 @@
             align-items: center;
             text-align: center;
         }
-
         #act-2 .overlay {
             position: absolute;
             top: 0;
@@ -138,17 +114,14 @@
             height: 100%;
             background: radial-gradient(circle, transparent 20%, #000 90%);
         }
-
         #act-2 .content-block {
             position: relative;
             z-index: 2;
             max-width: 900px;
         }
-
         #act-2 .headline {
             color: var(--caution-red);
         }
-
         .proof-box {
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
@@ -157,7 +130,6 @@
             border-left: 4px solid var(--caution-red);
             text-align: left;
         }
-
         /* ACT III: THE RECKONING */
         #act-3 {
             flex-direction: column;
@@ -166,7 +138,6 @@
             text-align: center;
             background: radial-gradient(circle at center, #111 0%, #000 100%);
         }
-
         .input-field {
             background: transparent;
             border: none;
@@ -181,13 +152,11 @@
             font-family: 'Inter';
             transition: border-color 0.3s;
         }
-
         .input-field:focus {
             outline: none;
             border-color: var(--safety-orange);
             box-shadow: 0 10px 20px -10px var(--safety-orange);
         }
-
         .emergency-btn {
             background: #8B0000;
             background: radial-gradient(circle at 30% 30%, #ff4d4d, #8B0000);
@@ -202,32 +171,26 @@
             transition: transform 0.1s, box-shadow 0.3s;
             text-transform: uppercase;
         }
-
         .emergency-btn:hover {
             box-shadow: 0 0 70px rgba(255, 0, 0, 0.8);
             transform: scale(1.02);
             opacity: 0.8;
         }
-
         .emergency-btn:active {
             transform: scale(0.95);
             box-shadow: 0 0 20px rgba(255, 0, 0, 1);
         }
-
         @media (max-width: 900px) {
             #act-1 {
                 grid-template-columns: 1fr;
             }
-
             .portrait-container {
                 height: 50vh;
             }
         }
     </style>
 </head>
-
 <body>
-
     <!-- ACT I -->
     <section id="act-1">
         <div class="portrait-container">
@@ -244,29 +207,24 @@
             </div>
         </div>
     </section>
-
     <!-- ACT II -->
     <section id="act-2">
         <div class="overlay"></div>
         <div class="content-block">
             <h2 class="headline dirty-text">THE JAN 29 PERJURY.</h2>
             <div class="proof-box">
-
                 <p><b>The Proof:</b> Kucker Marino Winiarsky & Bittens told a judge the buy-back money was "rent."</p>
                 <p><b>The Legal Trap:</b> Under NY Law, they cannot evict until they pay back the $245k + 9% interest.
                     They are counting on the court not reading the fine print. <b>We just did.</b></p>
             </div>
         </div>
     </section>
-
     <!-- ACT III -->
     <section id="act-3">
         <h2 class="dirty-text" style="color: var(--off-white); margin-bottom: 1rem;">KILL THE EVICTION.</h2>
         <p style="margin-bottom: 3rem; color: #888;">One click fires a legal grievance to the firm's partners and the
             court clerk.</p>
-
         <input type="text" id="user-name" class="input-field" placeholder="NAME / EMAIL">
-
         <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()">
             [ DISPATCH ULTIMATUM ]
         </button>
@@ -275,23 +233,18 @@
             Clicking will copy the formal complaint to your clipboard and open your email. Please PASTE the message and
             hit SEND.
         </p>
-
         <p id="coalition-signal"
             style="margin-top: 4rem; font-family: 'Oswald'; color: var(--safety-orange); letter-spacing: 2px;">
             THE COALITION IS IN THE ROOM.
         </p>
     </section>
-
     <script>
         const act2 = document.getElementById('act-2');
         act2.style.backgroundImage = `url('assets/doc-leak.png')`;
-
         document.getElementById('portrait-img').src = 'assets/portrait.png';
-
         async function dispatchUltimatum() {
             const nameInput = document.getElementById('user-name').value;
             const name = nameInput || '[Your Name]';
-
             const to = "jdopico@nycourts.gov, AD1-AGC-newcomplaints@nycourts.gov";
             const cc = [
                 "District20@council.nyc.gov",
@@ -308,11 +261,8 @@
                 "public.integrity@ag.ny.gov",
                 "CivilRights.Division@usdoj.gov"
             ].join(", ");
-
             const subject = "Public Grievance Concerning Kucker Marino Winiarsky & Bittens, LP";
-
             const bodyText = `I am writing as a concerned member of the public regarding a grievance involving the law firm Kucker Marino Winiarsky & Bittens, LP, and the conduct of its attorneys in matters that raise serious concerns about potential harm to the public.\n\nBased on my review of publicly filed court records, the firm’s litigation conduct raises significant questions about professional misconduct. These issues appear across multiple cases and do not reflect isolated mistakes or ordinary advocacy.\n\nAs a member of the public, I am submitting this grievance to request an investigation into the firm’s alleged predatory litigation practices.\n\nI am particularly concerned where these practices involve senior homeowners, disputed ownership interests, and litigation tactics that appear designed to avoid decisions on the merits through procedural maneuvering. Conduct of this nature undermines public confidence in the legal system and the ethical obligations attorneys owe to the courts and the public.\n\nThank you for your attention to this matter.\n\nRespectfully,\n${name}`;
-
             // Step A (The Clipboard)
             try {
                 await navigator.clipboard.writeText(bodyText);
@@ -320,11 +270,9 @@
             } catch (err) {
                 console.error("❌ Failed to copy text: ", err);
             }
-
             // Step B (The Email Client)
             const mailtoUrl = `mailto:${to}?cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(subject)}`;
             window.location.href = mailtoUrl;
-
             // Step C (The Counter)
             const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsF8ZwC7Q7VIXlKRGcIM8T_1knzl5yJ8X8UI2KAjXSZLTb5iCyp0rqGv6KCWuo4I-0s-3xou0D9Sq3/pub?gid=0&single=true&output=csv";
             try {
@@ -335,7 +283,6 @@
                 console.error("❌ Error dispatching counter hit:", error);
             }
         }
-
         function randomizeGrunge() {
             document.querySelectorAll('.dirty-text').forEach(el => {
                 const x = Math.floor(Math.random() * 100);
@@ -346,7 +293,6 @@
                 el.style.transform = `rotate(${rot}deg)`;
             });
         }
-
         function pulseSignal() {
             const signal = document.getElementById('coalition-signal');
             if (signal) {
@@ -355,13 +301,10 @@
                 }, 2000);
             }
         }
-
         document.addEventListener('DOMContentLoaded', () => {
             randomizeGrunge();
             pulseSignal();
         });
     </script>
-
 </body>
-
 </html>
