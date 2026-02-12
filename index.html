@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE MS. HUNG CASE | 3-ACT RECKONING</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700;900&display=swap"
+    <title>THE MS. HUNG CASE | JUSTICE DEMANDED</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&family=Inter:wght@400;700;900&display=swap"
         rel="stylesheet">
     <style>
         :root {
@@ -46,13 +46,45 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* ACT I: THE COUP */
+        .logo-top {
+            width: 200px;
+            margin: 2rem auto;
+            display: block;
+        }
+
+        .desktop-logo {
+            display: none;
+            width: calc(15rem - 5px);
+            margin-bottom: 2rem;
+            margin-left: auto;
+            transform: rotate(-3deg);
+        }
+
+        .logo-bottom {
+            width: 150px;
+            margin: 4rem auto 2rem auto;
+            display: block;
+            opacity: 0.7;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 0%;
+            height: 5px;
+            background-color: var(--safety-orange);
+            z-index: 900;
+            transition: width 0.1s ease-out;
+        }
+
+        /* ACT I: THE STORY */
         #act-1 {
             background: linear-gradient(90deg, #000 40%, #050505 100%);
             display: grid;
             grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 4rem;
+            align-items: start;
+            gap: 2rem;
         }
 
         .portrait-container {
@@ -60,13 +92,28 @@
             height: 80vh;
             overflow: hidden;
             box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.8);
+            background-color: #000;
         }
 
         .portrait-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(100%) contrast(120%) brightness(80%);
+            /* filter: grayscale(100%) contrast(1.2); */
+            /* mask-image: radial-gradient(circle at center, black 40%, transparent 100%); */
+            /* -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%); */
+        }
+
+        /* Vignette overlay */
+        .portrait-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 50%, #000 100%);
+            pointer-events: none;
         }
 
         .content-block {
@@ -74,13 +121,12 @@
         }
 
         .headline {
-            font-size: clamp(4rem, 10vw, 8rem);
+            font-size: clamp(3rem, 8vw, 6.5rem);
             color: var(--safety-orange);
             line-height: 0.85;
             margin-bottom: 2rem;
         }
 
-        /* DIRTY TEXT EFFECT */
         .dirty-text {
             transform: rotate(-1deg) !important;
         }
@@ -102,15 +148,101 @@
         .stake-alert {
             background: var(--caution-red);
             color: white;
-            padding: 1.5rem;
+            padding: 1rem 1.5rem;
             display: inline-block;
             font-family: 'Oswald';
-            font-size: 2rem;
+            font-size: 1.5rem;
             letter-spacing: 1px;
             transform: skew(-5deg);
+            margin-top: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s;
         }
 
-        /* ACT II: THE PERJURY */
+        .stake-alert:hover {
+            background: #ff4d4d;
+        }
+
+        .action-button {
+            background-color: #d93025;
+            color: white;
+            padding: 1rem 2rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: #b02015;
+        }
+
+        /* Tactical Selection Hover Effect */
+        .case-link {
+            text-decoration: none;
+            color: #777;
+            /* Default Grey/White */
+            display: block;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 0;
+            border-left: 4px solid transparent;
+            /* Prevent layout jump */
+        }
+
+        .case-link:hover {
+            color: #8c391a;
+            /* Burnt Sienna */
+            padding-left: 12px;
+            /* Nudge right */
+            border-left: 4px solid #8c391a;
+            /* Visual Marker */
+        }
+
+        /* Remove old underline effect */
+        .case-link::after {
+            display: none;
+        }
+
+        /* Fast Lane floating button */
+        .fast-lane {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #8c391a;
+            /* Darker accent */
+            color: white;
+            padding: 1rem 2rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+            transition: opacity 0.5s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .fast-lane:hover {
+            transform: translateY(-2px);
+            background-color: #6b2b13;
+        }
+
+        .fast-lane.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ACT II: THE CRIME & THE LAW */
         #act-2 {
             background-size: cover;
             background-position: center;
@@ -121,6 +253,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
         }
 
         #act-2 .overlay {
@@ -135,7 +269,7 @@
         #act-2 .content-block {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 1000px;
         }
 
         #act-2 .headline {
@@ -145,20 +279,75 @@
         .proof-box {
             background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
-            padding: 2rem;
+            padding: 2.5rem;
             margin-top: 2rem;
             border-left: 4px solid var(--caution-red);
             text-align: left;
             line-height: 1.6;
         }
 
-        /* ACT III: THE RECKONING */
+        .proof-box h3 {
+            color: var(--caution-red);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        /* ACT III: THE PATTERN & RECKONING */
         #act-3 {
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .pattern-box {
+            max-width: 800px;
+            margin-bottom: 4rem;
+        }
+
+        .case-list {
+            list-style: none;
+            margin: 2rem 0;
+            font-family: 'Oswald';
+            font-size: 1.8rem;
+            color: #777;
+        }
+
+        .case-list li {
+            border-bottom: 1px solid #333;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .case-link {
+            text-decoration: none;
+            color: #777;
+            display: block;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .case-link:hover {
+            color: var(--off-white);
+            padding-left: 10px;
+        }
+
+        .case-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--safety-orange);
+            transition: width 0.3s ease;
+        }
+
+        .case-link:hover::after {
+            width: 100%;
         }
 
         .input-field {
@@ -201,13 +390,17 @@
 
         .emergency-btn:hover {
             box-shadow: 0 0 70px rgba(255, 0, 0, 0.8);
-            transform: scale(1.02);
             opacity: 0.8;
         }
 
-        .emergency-btn:active {
-            transform: scale(0.95);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+        @media (min-width: 901px) {
+            .logo-top {
+                display: none;
+            }
+
+            .desktop-logo {
+                display: block;
+            }
         }
 
         @media (max-width: 900px) {
@@ -218,117 +411,179 @@
             .portrait-container {
                 height: 50vh;
             }
+
+            .headline {
+                font-size: clamp(3rem, 12vw, 5rem);
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- ACT I -->
+    <div id="scroll-progress"></div>
+    <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="logo-top">
+
+    <!-- ACT I: THE STORY -->
     <section id="act-1">
         <div class="portrait-container">
-            <img id="portrait-img" alt="Ms. Hung">
+            <img id="portrait-img" alt="Ms. Hung" src="assets/portrait.png">
         </div>
         <div class="content-block">
-            <h1 class="headline dirty-text">THE $1.2M<br>CORNER LOT COUP.</h1>
+            <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="desktop-logo">
+            <h1 class="headline dirty-text">THE<br>CORNER LOT<br>COUP</h1>
             <p class="narrative">
-                <b>85-year-old widow.</b> $245,200 paid in good faith.
-                A predatory "Trust" that took the money and kept the deed.
+                An 85-year-old widow.<br>
+                $245,200 paid in good faith.<br>
+                A trust that took the money—and kept the deed.
             </p>
-            <div class="stake-alert">
-                FEB 24. THE DAY THE SHERIFF ARRIVES.
-            </div>
+            <a href="#crime-section" class="action-button"
+                onclick="document.getElementById('crime-section').scrollIntoView({behavior:'smooth'});">READ THE CASE
+                FILE
+                ↓</a>
         </div>
     </section>
-    <!-- ACT II -->
+
+    <!-- ACT II: THE CRIME, LAW, TRAP, PERJURY -->
     <section id="act-2">
         <div class="overlay"></div>
         <div class="content-block">
-            <h2 class="headline dirty-text">THE JAN 29 PERJURY.</h2>
+            <div class="proof-box" id="crime-section">
+                <h3>THE CRIME</h3>
+                <p>In 2018, a Supreme Court rescinded Dorothy Hung’s deed due to a technical notarization defect, but
+                    explicitly found her $245,200 payments were "undisputed." The money was never returned. By law, this
+                    created an equitable interest. No one may keep both the house and the purchase money.</p>
+            </div>
+
             <div class="proof-box">
-                <p><b>The Proof:</b> Kucker Marino Winiarsky & Bittens told a judge the buy-back money was "rent."</p>
-                <p><b>The Legal Trap:</b> New York law is explicit: They cannot evict until they return the $245,200 +
-                    9% interest.</p>
-                <p>The specific law this is called is <b>Vendee's Lien (CPLR 3002(f))</b>.</p>
+                <h3>THE LAW</h3>
+                <p>Under New York law, keeping the money created a <b>VENDEE’S LIEN (CPLR 3002(f))</b>. This means they
+                    cannot evict her until every dollar is paid back.</p>
+            </div>
+
+            <div class="proof-box">
+                <h3>THE TRAP</h3>
+                <p>In 2020, attorneys pressured the elderly couple into signing a "stipulation"—a complex legal
+                    agreement to vacate the property—without getting a single dime of their savings back. In December
+                    2025, the Trust returned to evict Mrs. Hung—now a widow.</p>
+            </div>
+
+            <div class="proof-box">
+                <h3>THE PERJURY</h3>
+                <p>In January 2026, despite knowing about the $245,000 lien, the Trust's attorneys told two separate
+                    courts that the money was just "rent" and that Mrs. Hung had no rights to the home.</p>
             </div>
         </div>
     </section>
-    <!-- ACT III -->
+
+    <!-- ACT III: THE PATTERN & Action -->
     <section id="act-3">
-        <h2 class="headline dirty-text"
-            style="color: var(--caution-red); font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem; text-shadow: 0 0 30px rgba(210, 43, 43, 0.5);">
-            STOP THE EVICTION.</h2>
-        <p style="margin-bottom: 3rem; color: #888;">One click fires a legal grievance to the firm's partners and the
-            court clerk.</p>
-        <input type="text" id="user-name" class="input-field" placeholder="NAME">
-        <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()">
-            [ JOIN THE GRIEVANCE ]
-        </button>
-        <p
-            style="margin-top: 1rem; font-family: 'Inter'; font-size: 0.8rem; color: #666; font-style: italic; text-transform: uppercase; letter-spacing: 1px;">
-            Clicking will copy the formal complaint to your clipboard and open your email. Please PASTE the message and
-            hit SEND.
-        </p>
-        <p id="coalition-signal"
-            style="margin-top: 4rem; font-family: 'Oswald'; color: var(--safety-orange); letter-spacing: 2px;">
-            THE COALITION IS IN THE ROOM.
-        </p>
+        <div class="pattern-box">
+            <h2 class="headline dirty-text" style="color: var(--caution-red);">THE PATTERN</h2>
+            <p class="dirty-text"
+                style="font-family: 'Oswald'; font-size: 1.2rem; color: #8c391a; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 1px;">
+                Verify the pattern. Click any case below to view the official court filings for yourself.
+            </p>
+            <ul class="case-list">
+                <li><a href="https://iapps.courts.state.ny.us/nyscef/ViewDocument?docIndex=p7Vv1edxwlBY7MrBNafwTw=="
+                        class="case-link" target="_blank">2347 West 1st Street LLC v. Lati</a></li>
+                <li><a href="https://iapps.courts.state.ny.us/webcivil/FCASeFiledDocsDetail?county_code=Qh6jvaD93sYf8f23eU%2FzIA%3D%3D&txtIndexNo=YoZzLx2Gfkn8%2FaVgl_PLUS_pfgA%3D%3D&showMenu=no&isPreRji=N&civilCase=BtpHKMf73Vo_PLUS_3EIK8LNVJQ%3D%3D"
+                        class="case-link" target="_blank">Ammach v. Armouth-Levy</a></li>
+                <li><a href="https://iapps.courts.state.ny.us/nyscef/DocumentList?docketId=_PLUS_uDgUNxtTnjZ5XoNJDwdFQ==&display=all&courtType=Queens%20County%20Civil%20Court%20-%20Landlord%20and%20Tenant%20Division&resultsPageNum=1"
+                        class="case-link" target="_blank">The Lih Yuh Kuo Family Trust 2012 v. Lao-Teh Hung</a></li>
+                <li><a href="https://iapps.courts.state.ny.us/webcivil/FCASeFiledDocsDetail?county_code=Qh6jvaD93sYf8f23eU%2FzIA%3D%3D&txtIndexNo=t2VWHjEJ4LrYtF7kid1KvQ%3D%3D&showMenu=no&isPreRji=N&civilCase=34mrhBXS9S5w7nExuHaKnw%3D%3D"
+                        class="case-link" target="_blank">Griffin v. 72634552 Corp.</a></li>
+                <li><a href="https://iapps.courts.state.ny.us/webcivil/FCASeFiledDocsDetail?county_code=Qh6jvaD93sYf8f23eU%2FzIA%3D%3D&txtIndexNo=oqiMpVwQvZogQkJJKmXnzg%3D%3D&showMenu=no&isPreRji=N&civilCase=i6a8ngZNrUiFYbvxQ7nppA%3D%3D"
+                        class="case-link" target="_blank">178 Lefferts Avenue Corp. v. Forbes</a></li>
+                <li><a href="https://iapps.courts.state.ny.us/nyscef/DocumentList?docketId=QUd9dOyRI14QsM4Zr6OX0w==&display=all&courtType=Queens%20County%20Supreme%20Court&resultsPageNum=1"
+                        class="case-link" target="_blank">Dorothy Hung v. The Lih Yuh Kuo Family Trust 2012</a></li>
+            </ul>
+        </div>
+
+        <div id="action-section">
+            <h2 class="headline dirty-text"
+                style="color: var(--caution-red); font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem;">STOP THE
+                ATTORNEYS</h2>
+            <p
+                style="margin-bottom: 3rem; color: #888; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                Report a pattern of attorney misconduct. One click fires a complaint to the grievance committee and to
+                state
+                elected officials.
+            </p>
+
+            <input type="text" id="user-name" class="input-field" placeholder="NAME">
+            <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()">
+                SERVE THE NOTICE
+            </button>
+            <p
+                style="margin-top: 1.5rem; color: #666; font-style: italic; max-width: 500px; text-align: center; margin-left: auto; margin-right: auto;">
+                Your name will be added to a formal judicial grievance against the law firm.
+            </p>
+            <p id="coalition-signal"
+                style="margin-top: 4rem; font-family: 'Oswald'; color: var(--safety-orange); letter-spacing: 2px; opacity: 0.4;">
+                THE COALITION IS IN THE ROOM.
+            </p>
+        </div>
+
+        <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="logo-bottom">
     </section>
+
+    <!-- Fast Lane Button -->
+    <button class="fast-lane" id="fast-lane-btn"
+        onclick="document.getElementById('action-section').scrollIntoView({behavior:'smooth'});">SKIP TO ACTION
+        ↓</button>
+
     <script>
         const act2 = document.getElementById('act-2');
         act2.style.backgroundImage = `url('assets/doc-leak.png')`;
-        document.getElementById('portrait-img').src = 'assets/portrait.png';
         async function dispatchUltimatum() {
             const nameInput = document.getElementById('user-name').value;
             const name = nameInput || '[Your Name]';
             const to = "jdopico@nycourts.gov, AD1-AGC-newcomplaints@nycourts.gov";
             const cc = [
-                "District20@council.nyc.gov",
-                "president@queensbp.org",
-                "mayor@cityhall.nyc.gov",
-                "liu@nysenate.gov",
-                "kimr@nyassembly.gov",
-                "governor.hochul@exec.ny.gov",
-                "repgracemeng@mail.house.gov",
-                "schumer@schumer.senate.gov",
-                "gillibrand@gillibrand.senate.gov",
-                "sdtcampaign@gmail.com",
-                "cjc@cjc.ny.gov",
-                "public.integrity@ag.ny.gov",
-                "CivilRights.Division@usdoj.gov"
+                "District20@council.nyc.gov", "president@queensbp.org", "mayor@cityhall.nyc.gov",
+                "liu@nysenate.gov", "kimr@nyassembly.gov", "governor.hochul@exec.ny.gov",
+                "repgracemeng@mail.house.gov", "schumer@schumer.senate.gov", "gillibrand@gillibrand.senate.gov",
+                "sdtcampaign@gmail.com", "cjc@cjc.ny.gov", "public.integrity@ag.ny.gov", "CivilRights.Division@usdoj.gov"
             ].join(", ");
-            const subject = "Public Grievance Concerning Kucker Marino Winiarsky & Bittens, LP";
-            const bodyText = `I am writing as a concerned member of the public regarding a grievance involving the law firm Kucker Marino Winiarsky & Bittens, LP, and the conduct of its attorneys in matters that raise serious concerns about potential harm to the public.\n\nBased on my review of publicly filed court records, the firm’s litigation conduct raises significant questions about professional misconduct. These issues appear across multiple cases and do not reflect isolated mistakes or ordinary advocacy.\n\nAs a member of the public, I am submitting this grievance to request an investigation into the firm’s alleged predatory litigation practices.\n\nI am particularly concerned where these practices involve senior homeowners, disputed ownership interests, and predatory litigation tactics. 
-Conduct of this nature undermines public confidence in the legal system and the ethical obligations attorneys owe to the courts and the public.\n\nThank you for your attention to this matter.\n\nRespectfully,\n${name}`;
-            // Step A (The Clipboard)
+
+            const subject = "PUBLIC GRIEVANCE: Kucker Marino Winiarsky & Bittens, LP";
+
+            const bodyText = `THE STORY: An 85-year-old widow. $245,200 paid in good faith. A trust that took the money—and kept the deed.
+
+THE CRIME: In 2018, a Supreme Court rescinded Dorothy Hung’s deed due to a technical notarization defect, but explicitly found her $245,200 payments were "undisputed." The money was never returned.
+
+THE LAW: Under New York law, keeping the money created a VENDEE’S LIEN (CPLR 3002(f)). This means they cannot evict her until every dollar is paid back.
+
+THE TRAP: In 2020, attorneys pressured the elderly couple into signing a "stipulation"—a complex legal agreement to vacate the property—without getting a single dime of their savings back.
+
+THE PERJURY: In January 2026, despite knowing about the $245,000 lien, the Trust's attorneys told two separate courts that the money was just "rent" and that Mrs. Hung had no rights to the home.
+
+THIS IS NOT ABOUT ONE WIDOW. IT IS A PATTERN OF PREDATORY LITIGATION.
+
+Respectfully,
+${name}`;
+
             try {
                 await navigator.clipboard.writeText(bodyText);
-                console.log("✅ Complaint copied to clipboard.");
             } catch (err) {
-                console.error("❌ Failed to copy text: ", err);
+                console.error("Clipboard failed", err);
             }
-            // Step B (The Email Client)
-            const mailtoUrl = `mailto:${to}?cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(subject)}`;
+
+            const mailtoUrl = `mailto:${to}?cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
             window.location.href = mailtoUrl;
-            // Step C (The Counter)
+
+            // Trigger counter
             const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsF8ZwC7Q7VIXlKRGcIM8T_1knzl5yJ8X8UI2KAjXSZLTb5iCyp0rqGv6KCWuo4I-0s-3xou0D9Sq3/pub?gid=0&single=true&output=csv";
-            try {
-                // Background fetch to trigger the counter increment (assuming the sheet increments on hit)
-                await fetch(csvUrl + '&t=' + Date.now(), { mode: 'no-cors' });
-                console.log("🔢 Counter hit dispatched.");
-            } catch (error) {
-                console.error("❌ Error dispatching counter hit:", error);
-            }
+            fetch(csvUrl + '&t=' + Date.now(), { mode: 'no-cors' }).catch(() => { });
         }
+
         function randomizeGrunge() {
             document.querySelectorAll('.dirty-text').forEach(el => {
-                const x = Math.floor(Math.random() * 100);
-                const y = Math.floor(Math.random() * 100);
                 const rot = (Math.random() * 2 - 1).toFixed(2);
-                el.style.webkitMaskPosition = `${x}% ${y}%`;
-                el.style.maskPosition = `${x}% ${y}%`;
                 el.style.transform = `rotate(${rot}deg)`;
             });
         }
+
         function pulseSignal() {
             const signal = document.getElementById('coalition-signal');
             if (signal) {
@@ -337,9 +592,39 @@ Conduct of this nature undermines public confidence in the legal system and the 
                 }, 2000);
             }
         }
+
+        // Fast Lane smart fade-out
+        function initFastLane() {
+            const btn = document.getElementById('fast-lane-btn');
+            const target = document.getElementById('action-section');
+            if (!btn || !target) return;
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        btn.classList.add('hidden');
+                    } else {
+                        btn.classList.remove('hidden');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(target);
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             randomizeGrunge();
             pulseSignal();
+            initFastLane();
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                const progressBar = document.getElementById("scroll-progress");
+                if (progressBar) {
+                    progressBar.style.width = scrolled + "%";
+                }
+            });
         });
     </script>
 </body>
