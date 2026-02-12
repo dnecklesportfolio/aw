@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MS. HUNG CASE | 3-ACT RECKONING</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Inter:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --safety-orange: #8c391a;
+            --caution-red: #D22B2B;
+            --noir-black: #050505;
+            --off-white: #e0e0e0;
+            --texture-opacity: 0.8;
+            --smoke-grey: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--noir-black);
+            color: var(--off-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.4;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            position: relative;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* ACT I: THE COUP */
+        #act-1 {
+            background: linear-gradient(90deg, #000 40%, #050505 100%);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .portrait-container {
+            position: relative;
+            height: 80vh;
+            overflow: hidden;
+            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.8);
+        }
+
+        .portrait-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(120%) brightness(80%);
+        }
+
+        .content-block {
+            padding-right: 2rem;
+        }
+
+        .headline {
+            font-size: clamp(4rem, 10vw, 8rem);
+            color: var(--safety-orange);
+            line-height: 0.85;
+            margin-bottom: 2rem;
+        }
+
+        /* DIRTY TEXT EFFECT */
+        .dirty-text {
+            transform: rotate(-1deg) !important;
+        }
+
+        .narrative {
+            font-size: 1.5rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            color: #aaa;
+            line-height: 1.8;
+        }
+
+        .narrative b {
+            color: var(--off-white);
+            font-weight: 700;
+        }
+
+        .stake-alert {
+            background: var(--caution-red);
+            color: white;
+            padding: 1.5rem;
+            display: inline-block;
+            font-family: 'Oswald';
+            font-size: 2rem;
+            letter-spacing: 1px;
+            transform: skew(-5deg);
+        }
+
+        /* ACT II: THE PERJURY */
+        #act-2 {
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: rgba(0, 0, 0, 0.85);
+            background-blend-mode: darken;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #act-2 .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, #000 90%);
+        }
+
+        #act-2 .content-block {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        #act-2 .headline {
+            color: var(--caution-red);
+        }
+
+        .proof-box {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid var(--caution-red);
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        /* ACT III: THE RECKONING */
+        #act-3 {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+        }
+
+        .input-field {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #333;
+            color: var(--off-white);
+            font-size: 2rem;
+            padding: 1rem;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-family: 'Inter';
+            transition: border-color 0.3s;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--safety-orange);
+            box-shadow: 0 10px 20px -10px var(--safety-orange);
+        }
+
+        .emergency-btn {
+            background: #8B0000;
+            background: radial-gradient(circle at 30% 30%, #ff4d4d, #8B0000);
+            color: white;
+            border: none;
+            padding: 2rem 4rem;
+            font-family: 'Oswald';
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            cursor: pointer;
+            box-shadow: 0 0 60px rgba(139, 0, 0, 0.6), inset 0 0 25px rgba(0, 0, 0, 0.6);
+            border-radius: 12px;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 900;
+        }
+
+        .emergency-btn:hover {
+            box-shadow: 0 0 70px rgba(255, 0, 0, 0.8);
+            transform: scale(1.02);
+            opacity: 0.8;
+        }
+
+        .emergency-btn:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+        }
+
+        @media (max-width: 900px) {
+            #act-1 {
+                grid-template-columns: 1fr;
+            }
+
+            .portrait-container {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ACT I -->
+    <section id="act-1">
+        <div class="portrait-container">
+            <img id="portrait-img" alt="Ms. Hung">
+        </div>
+        <div class="content-block">
+            <h1 class="headline dirty-text">THE $1.2M<br>CORNER LOT COUP.</h1>
+            <p class="narrative">
+                <b>85-year-old widow.</b> $245,200 paid in good faith.
+                A predatory "Trust" that took the money and kept the deed.
+            </p>
+            <div class="stake-alert">
+                FEB 24. THE DAY THE SHERIFF ARRIVES.
+            </div>
+        </div>
+    </section>
+    <!-- ACT II -->
+    <section id="act-2">
+        <div class="overlay"></div>
+        <div class="content-block">
+            <h2 class="headline dirty-text">THE JAN 29 PERJURY.</h2>
+            <div class="proof-box">
+                <p><b>The Proof:</b> Kucker Marino Winiarsky & Bittens told a judge the buy-back money was "rent."</p>
+                <p><b>The Legal Trap:</b> New York law is explicit: They cannot evict until they return the $245,200 +
+                    9% interest.</p>
+                <p>The specific law this is called is <b>Vendee's Lien (CPLR 3002(f))</b>.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ACT III -->
+    <section id="act-3">
+        <h2 class="headline dirty-text"
+            style="color: var(--caution-red); font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem; text-shadow: 0 0 30px rgba(210, 43, 43, 0.5);">
+            STOP THE EVICTION.</h2>
+        <p style="margin-bottom: 3rem; color: #888;">One click fires a legal grievance to the firm's partners and the
+            court clerk.</p>
+        <input type="text" id="user-name" class="input-field" placeholder="NAME">
+        <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()">
+            [ JOIN THE GRIEVANCE ]
+        </button>
+        <p
+            style="margin-top: 1rem; font-family: 'Inter'; font-size: 0.8rem; color: #666; font-style: italic; text-transform: uppercase; letter-spacing: 1px;">
+            Clicking will copy the formal complaint to your clipboard and open your email. Please PASTE the message and
+            hit SEND.
+        </p>
+        <p id="coalition-signal"
+            style="margin-top: 4rem; font-family: 'Oswald'; color: var(--safety-orange); letter-spacing: 2px;">
+            THE COALITION IS IN THE ROOM.
+        </p>
+    </section>
+    <script>
+        const act2 = document.getElementById('act-2');
+        act2.style.backgroundImage = `url('assets/doc-leak.png')`;
+        document.getElementById('portrait-img').src = 'assets/portrait.png';
+        async function dispatchUltimatum() {
+            const nameInput = document.getElementById('user-name').value;
+            const name = nameInput || '[Your Name]';
+            const to = "jdopico@nycourts.gov, AD1-AGC-newcomplaints@nycourts.gov";
+            const cc = [
+                "District20@council.nyc.gov",
+                "president@queensbp.org",
+                "mayor@cityhall.nyc.gov",
+                "liu@nysenate.gov",
+                "kimr@nyassembly.gov",
+                "governor.hochul@exec.ny.gov",
+                "repgracemeng@mail.house.gov",
+                "schumer@schumer.senate.gov",
+                "gillibrand@gillibrand.senate.gov",
+                "sdtcampaign@gmail.com",
+                "cjc@cjc.ny.gov",
+                "public.integrity@ag.ny.gov",
+                "CivilRights.Division@usdoj.gov"
+            ].join(", ");
+            const subject = "Public Grievance Concerning Kucker Marino Winiarsky & Bittens, LP";
+            const bodyText = `I am writing as a concerned member of the public regarding a grievance involving the law firm Kucker Marino Winiarsky & Bittens, LP, and the conduct of its attorneys in matters that raise serious concerns about potential harm to the public.\n\nBased on my review of publicly filed court records, the firm’s litigation conduct raises significant questions about professional misconduct. These issues appear across multiple cases and do not reflect isolated mistakes or ordinary advocacy.\n\nAs a member of the public, I am submitting this grievance to request an investigation into the firm’s alleged predatory litigation practices.\n\nI am particularly concerned where these practices involve senior homeowners, disputed ownership interests, and predatory litigation tactics. 
+Conduct of this nature undermines public confidence in the legal system and the ethical obligations attorneys owe to the courts and the public.\n\nThank you for your attention to this matter.\n\nRespectfully,\n${name}`;
+            // Step A (The Clipboard)
+            try {
+                await navigator.clipboard.writeText(bodyText);
+                console.log("✅ Complaint copied to clipboard.");
+            } catch (err) {
+                console.error("❌ Failed to copy text: ", err);
+            }
+            // Step B (The Email Client)
+            const mailtoUrl = `mailto:${to}?cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(subject)}`;
+            window.location.href = mailtoUrl;
+            // Step C (The Counter)
+            const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsF8ZwC7Q7VIXlKRGcIM8T_1knzl5yJ8X8UI2KAjXSZLTb5iCyp0rqGv6KCWuo4I-0s-3xou0D9Sq3/pub?gid=0&single=true&output=csv";
+            try {
+                // Background fetch to trigger the counter increment (assuming the sheet increments on hit)
+                await fetch(csvUrl + '&t=' + Date.now(), { mode: 'no-cors' });
+                console.log("🔢 Counter hit dispatched.");
+            } catch (error) {
+                console.error("❌ Error dispatching counter hit:", error);
+            }
+        }
+        function randomizeGrunge() {
+            document.querySelectorAll('.dirty-text').forEach(el => {
+                const x = Math.floor(Math.random() * 100);
+                const y = Math.floor(Math.random() * 100);
+                const rot = (Math.random() * 2 - 1).toFixed(2);
+                el.style.webkitMaskPosition = `${x}% ${y}%`;
+                el.style.maskPosition = `${x}% ${y}%`;
+                el.style.transform = `rotate(${rot}deg)`;
+            });
+        }
+        function pulseSignal() {
+            const signal = document.getElementById('coalition-signal');
+            if (signal) {
+                setInterval(() => {
+                    signal.style.opacity = signal.style.opacity === '0.4' ? '1' : '0.4';
+                }, 2000);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            randomizeGrunge();
+            pulseSignal();
+        });
+    </script>
+</body>
+
+</html>
