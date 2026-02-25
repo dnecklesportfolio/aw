@@ -444,19 +444,6 @@
         </div>
     </section>
 
-    <!-- HERO CTA DUPLICATE -->
-    <section
-        style="min-height: unset; padding: 3rem 2rem; background: #000; flex-direction: column; align-items: center; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
-        <input type="text" id="user-name-hero" class="input-field" placeholder="ENTER YOUR NAME">
-        <button class="emergency-btn dirty-text" onclick="dispatchUltimatumHero()">
-            WE NEED YOUR HELP.<br />Tap here to File the GRIEVANCE.
-        </button>
-        <p
-            style="margin-top: 1.5rem; color: #666; font-style: italic; max-width: 500px; text-align: center; margin-left: auto; margin-right: auto;">
-            Your name will be added to a formal judicial grievance against the law firm.
-        </p>
-    </section>
-
     <!-- ACT II: THE CRIME, LAW, TRAP, PERJURY -->
     <section id="act-2">
         <div class="overlay"></div>
@@ -546,17 +533,8 @@
     <script>
         const act2 = document.getElementById('act-2');
         act2.style.backgroundImage = `url('assets/doc-leak.png')`;
-        async function dispatchUltimatumHero() {
-            const nameInput = document.getElementById('user-name-hero').value;
-            return _dispatchUltimatumWith(nameInput);
-        }
-
         async function dispatchUltimatum() {
             const nameInput = document.getElementById('user-name').value;
-            return _dispatchUltimatumWith(nameInput);
-        }
-
-        async function _dispatchUltimatumWith(nameInput) {
             const name = nameInput || '[Your Name]';
             const to = "jdopico@nycourts.gov, AD1-AGC-newcomplaints@nycourts.gov";
             const cc = [
