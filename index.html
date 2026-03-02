@@ -33,11 +33,17 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
         body {
             background-color: var(--noir-black);
             color: var(--off-white);
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
             line-height: 1.4;
         }
 
@@ -128,11 +134,15 @@
 
         .content-block {
             padding-right: 2rem;
+            padding-left: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             /* Push content to bottom */
             height: 100%;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
         }
 
         .headline {
@@ -365,6 +375,7 @@
             position: relative;
             z-index: 2;
             max-width: 1000px;
+            width: 100%;
         }
 
         #act-2 .headline {
@@ -595,10 +606,10 @@
                 PUBLIC EVIDENCE REPOSITORY</div>
             <h1 class="headline dirty-text"
                 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 0.9; color: var(--safety-orange);">
-                THE CASE OF<br>ALAN WEINTRAUB</h1>
+                Alan Waintraub, Esq.</h1>
             <p class="narrative">
-                An independent investigation into unlicensed mortgage banking, criminal usury, and the use of shell
-                entities to execute fraudulent foreclosures.
+                Unlicensed Mortgage Banking &#127919; Self-Verified Foreclosures &#127919;Public Integrity at Risk.
+                &#128689;
             </p>
             <div style="display: flex; justify-content: flex-start; width: 100%; max-width: 500px; margin-top: 2rem;">
                 <button onclick="document.querySelector('.quick-action-bar').scrollIntoView({behavior:'smooth'});"
@@ -782,7 +793,7 @@
                         File here for unlicensed mortgage banking and usurious loan structures.</div>
                     <a href="https://myportal.dfs.ny.gov/web/guest-applications/who-we-supervise" target="_blank"
                         class="emergency-btn dirty-text"
-                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; min-width: 500px; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
+                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
                         [SUBMIT DFS COMPLAINT]
                     </a>
                 </div>
@@ -796,7 +807,7 @@
                         style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
                         File here for ethical breaches, fraudulent verifications, and conflicts of interest.</div>
                     <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()"
-                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; width: 100%; min-width: 500px; max-width: 500px; padding: 1.5rem; box-shadow: none; cursor: pointer; margin: 0 auto;">
+                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; cursor: pointer; margin: 0 auto;">
                         [SUBMIT GRIEVANCE]
                     </button>
                 </div>
@@ -812,7 +823,7 @@
                         concealment.</div>
                     <a href="mailto:frc@fincen.gov?subject=Potential Corporate Transparency Act Violation Report"
                         class="emergency-btn dirty-text"
-                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; min-width: 500px; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
+                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
                         [SUBMIT FINCEN REPORT]
                     </a>
                 </div>
