@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE MS. HUNG CASE | JUSTICE DEMANDED</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&family=Inter:wght@400;700;900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&family=Inter:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap"
         rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
         :root {
             --safety-orange: #8c391a;
@@ -118,10 +120,15 @@
 
         .content-block {
             padding-right: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            /* Push content to bottom */
+            height: 100%;
         }
 
         .headline {
-            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-size: clamp(2rem, 6vw, 4.5rem);
             color: var(--safety-orange);
             line-height: 0.85;
             margin-bottom: 2rem;
@@ -132,12 +139,13 @@
         }
 
         .narrative {
-            font-size: 1.5rem;
-            max-width: 600px;
+            font-size: 1.25rem;
+            max-width: 500px;
             margin-bottom: 3rem;
             font-weight: 400;
             color: #aaa;
             line-height: 1.8;
+            font-family: 'Roboto Mono', monospace;
         }
 
         .narrative b {
@@ -184,6 +192,84 @@
         .action-button:hover {
             background-color: #b02015;
         }
+
+        /* Quick Action Bar */
+        .quick-action-bar {
+            background: #111;
+            padding: 3rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quick-action-header {
+            font-family: 'Oswald';
+            color: var(--caution-red);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .quick-action-subhead {
+            font-family: 'Roboto Mono', monospace;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .quick-action-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 33.333%);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-top: 1px solid #333;
+            border-bottom: 2px solid #333;
+            background: #fff;
+        }
+
+        .quick-action-btn {
+            background: #2c3e50;
+            border: 1px solid #34495e;
+            color: white;
+            padding: 1.5rem;
+            text-decoration: none;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .quick-action-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .quick-action-btn span {
+            font-family: 'Oswald';
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .quick-action-btn .btn-desc {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.75rem;
+            color: #ccc;
+            line-height: 1.3;
+            text-transform: none;
+            font-weight: normal;
+            letter-spacing: 0;
+            display: block;
+        }
+
+
 
         /* Tactical Selection Hover Effect */
         .case-link {
@@ -416,37 +502,161 @@
             .headline {
                 font-size: clamp(3rem, 12vw, 5rem);
             }
+
+            .quick-action-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Sticky Bottom Action Bar for Mobile */
+            #action-section {
+                padding-bottom: 150px;
+                /* Make room for sticky bar */
+            }
+
+            .mobile-sticky-actions {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background: #050505;
+                border-top: 1px solid #333;
+                padding: 10px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                z-index: 1000;
+                box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.8);
+            }
+
+            .mobile-sticky-actions .emergency-btn {
+                font-size: 0.8rem !important;
+                padding: 10px !important;
+                margin: 0 5px;
+                letter-spacing: 0;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Hide the desktop action buttons container on mobile */
+            .desktop-actions {
+                display: none !important;
+            }
+
+            /* Hide the fast lane button on mobile since we have the sticky bar */
+            .fast-lane {
+                display: none !important;
+            }
         }
     </style>
 </head>
 
 <body>
     <div id="scroll-progress"></div>
+
+    <!-- Mobile Sticky Action Bar -->
+    <div class="mobile-sticky-actions" style="display: none;">
+        <a href="https://myportal.dfs.ny.gov/web/guest-applications/who-we-supervise" target="_blank"
+            class="emergency-btn dirty-text"
+            style="font-family: 'Roboto Mono', monospace; background: #2c3e50; border: 1px solid #34495e; box-shadow: none;">
+            [DFS]
+        </a>
+        <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()"
+            style="font-family: 'Roboto Mono', monospace; background: #8c391a; border: none; box-shadow: none;">
+            [GRIEVANCE]
+        </button>
+        <a href="mailto:frc@fincen.gov?subject=Potential Corporate Transparency Act Violation Report"
+            class="emergency-btn dirty-text"
+            style="font-family: 'Roboto Mono', monospace; background: #2c3e50; border: 1px solid #34495e; box-shadow: none;">
+            [FINCEN]
+        </a>
+    </div>
     <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="logo-top">
 
-    <!-- ACT I: THE STORY -->
+    <!-- ACT I: THE HERO -->
     <section id="act-1">
         <div class="portrait-container">
-            <img id="portrait-img" alt="Ms. Hung" src="assets/portrait.png">
+            <img id="portrait-img" alt="Alan Waintraub" src="assets/portrait.png?v=20260301-2">
         </div>
-        <div class="content-block">
-            <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="desktop-logo">
-            <h1 class="headline dirty-text">THE<br>CORNER LOT<br>COUP</h1>
+        <div class="content-block" style="padding-bottom: 2rem;">
+            <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="desktop-logo"
+                style="width: 4rem; margin-top: 0; margin-bottom: auto; margin-right: 0;">
+            <div
+                style="font-family: 'Inter'; font-weight: 700; color: var(--off-white); font-size: 1rem; margin-bottom: 0.5rem; letter-spacing: 2px; text-transform: uppercase;">
+                PUBLIC EVIDENCE REPOSITORY</div>
+            <h1 class="headline dirty-text"
+                style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 0.9; color: var(--safety-orange);">
+                THE CASE OF<br>ALAN WEINTRAUB</h1>
             <p class="narrative">
-                An 85-year-old widow.<br>
-                $245,200 paid in good faith.<br>
-                A trust that took the money—and kept the deed.
+                An independent investigation into unlicensed mortgage banking, criminal usury, and the use of shell
+                entities to execute fraudulent foreclosures.
             </p>
-            <a href="#crime-section" class="action-button"
-                onclick="document.getElementById('crime-section').scrollIntoView({behavior:'smooth'});">READ THE CASE
-                FILE
-                ↓</a>
+            <div style="display: flex; justify-content: flex-start; width: 100%; max-width: 500px; margin-top: 2rem;">
+                <button onclick="document.querySelector('.quick-action-bar').scrollIntoView({behavior:'smooth'});"
+                    class="action-button dirty-text"
+                    style="font-family: 'Oswald', sans-serif; background-color: #d22b2b; color: white; border: none; padding: 1rem 1.5rem; font-size: 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+                    TAKE ACTION &darr;
+                </button>
+            </div>
+
         </div>
     </section>
 
-    <!-- HERO CTA DUPLICATE -->
+    <!-- QUICK ACTION BAR -->
+    <div class="quick-action-bar">
+        <h2 class="quick-action-header dirty-text">[00] IMMEDIATE REGULATORY ACTION</h2>
+        <p class="quick-action-subhead">
+            Select a reporting body to submit a formal request for investigation based on the evidence below.
+        </p>
+        <div class="quick-action-grid" style="border: none; background: transparent; padding-top: 1rem;">
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div
+                    style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
+                    UNLICENSED ACTIVITY</div>
+                <div
+                    style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 1.5rem; line-height: 1.4;">
+                    File here for unlicensed mortgage banking and usurious loan structures.
+                </div>
+                <a href="https://myportal.dfs.ny.gov/web/guest-applications/who-we-supervise" target="_blank"
+                    class="emergency-btn dirty-text"
+                    style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; padding: 1.2rem; box-shadow: none; border-radius: 8px;">
+                    [REPORT TO DFS]
+                </a>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div
+                    style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
+                    ETHICS & CONFLICTS</div>
+                <div
+                    style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 1.5rem; line-height: 1.4;">
+                    File here for ethical breaches, fraudulent verifications, and conflicts of interest.
+                </div>
+                <button onclick="dispatchUltimatum()" class="emergency-btn dirty-text"
+                    style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; width: 100%; padding: 1.2rem; box-shadow: none; cursor: pointer; border-radius: 8px;">
+                    [FILE GRIEVANCE]
+                </button>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <div
+                    style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
+                    CORPORATE TRANSPARENCY ACT</div>
+                <div
+                    style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 1.5rem; line-height: 1.4;">
+                    File here for potential violations of the Corporate Transparency Act and shell company concealment.
+                </div>
+                <a href="mailto:frc@fincen.gov?subject=Potential Corporate Transparency Act Violation Report"
+                    class="emergency-btn dirty-text"
+                    style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; padding: 1.2rem; box-shadow: none; border-radius: 8px;">
+                    [NOTIFY FINCEN]
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO CTA DUPLICATE (HIDDEN/REPLACED by QUICK ACTION BAR) -->
     <section
-        style="min-height: unset; padding: 3rem 2rem; background: #000; flex-direction: column; align-items: center; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        style="display: none; min-height: unset; padding: 3rem 2rem; background: #000; flex-direction: column; align-items: center; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
         <input type="text" id="user-name-hero" class="input-field" placeholder="ENTER YOUR NAME">
         <button class="emergency-btn dirty-text" onclick="dispatchUltimatumHero()">
             WE NEED YOUR HELP.<br />Tap here to File the GRIEVANCE.
@@ -457,78 +667,149 @@
         </p>
     </section>
 
-    <!-- ACT II: THE CRIME, LAW, TRAP, PERJURY -->
+    <!-- ACT II: EXHIBITS -->
     <section id="act-2">
         <div class="overlay"></div>
         <div class="content-block">
             <div class="proof-box" id="crime-section">
-                <h3>THE DECEIT</h3>
-                <p>In 2018, a Supreme Court rescinded Dorothy Hung’s deed due to a technical notarization defect, but
-                    explicitly found her $245,200 payments were "undisputed." The money was never returned. By law, this
-                    created an equitable interest. No one may keep both the house and the purchase money.</p>
+                <h3 style="font-family: 'Roboto Mono', monospace;">01 | THE BANKING VIOLATIONS</h3>
+                <h4 style="font-family: 'Oswald'; color: var(--off-white); font-size: 1.2rem; margin-bottom: 0.5rem;">
+                    Unlicensed Mortgage Lending</h4>
+                <p style="font-family: 'Roboto Mono', monospace; margin-bottom: 1rem;">Under NY Banking Law § 590 & §
+                    591, entities originating more than five residential mortgage loans per year must be licensed by the
+                    Department of Financial Services (DFS).</p>
+                <p style="font-family: 'Roboto Mono', monospace; margin-bottom: 1rem;"><b>The Evidence:</b> A search of
+                    the DFS "Who We Supervise" portal confirms that neither Alan Waintraub nor his primary corporate
+                    vehicles (Majestic Crown NY LLC, Albany Avenue Partners LLC) hold the required licenses.</p>
+                <p style="font-family: 'Roboto Mono', monospace; margin-bottom: 1.5rem;"><b>The Impact:</b> Since 2018,
+                    these entities have moved millions in high-interest debt without regulatory oversight.</p>
+
+                <h4
+                    style="font-family: 'Oswald'; color: var(--off-white); font-size: 1.2rem; margin-bottom: 0.5rem; margin-top: 1rem;">
+                    Criminal Usury (§ 190.40)</h4>
+                <p style="font-family: 'Roboto Mono', monospace;">Interest rates exceeding 25% annually constitute
+                    criminal usury in New York. Review of these loan structures—specifically when including "origination
+                    fees"—indicates APRs that exceed legal thresholds.</p>
+            </div>
+
+            <div class="proof-box data-table-container">
+                <h3 style="font-family: 'Roboto Mono', monospace;">02 | THE SHELL NETWORK INVENTORY</h3>
+                <p style="font-family: 'Roboto Mono', monospace; margin-bottom: 1rem;"><b>Case Study: $19M+ in
+                        Non-Compliant Filings</b><br>The following data reflects property seizures and mortgage
+                    originations executed by Waintraub-controlled entities.</p>
+                <table
+                    style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-family: 'Roboto Mono', monospace; text-align: left; background-color: rgba(255,255,255,0.05);">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--safety-orange);">
+                            <th style="padding: 10px;">YEAR</th>
+                            <th style="padding: 10px;">ENTITY OF RECORD</th>
+                            <th style="padding: 10px;">PRIMARY JURISDICTION</th>
+                            <th style="padding: 10px; text-align: right;">VALUE IDENTIFIED</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row"
+                            style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
+                            <td style="padding: 10px;">2023</td>
+                            <td style="padding: 10px;">Majestic Crown / Landlord Plus</td>
+                            <td style="padding: 10px;">Bronx, Manhattan, Queens</td>
+                            <td style="padding: 10px; color: var(--caution-red); text-align: right;">$10,758,000</td>
+                        </tr>
+                        <tr class="table-row"
+                            style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
+                            <td style="padding: 10px;">2019</td>
+                            <td style="padding: 10px;">Majestic Crown / Albany Ave</td>
+                            <td style="padding: 10px;">Bronx, Queens, Brooklyn</td>
+                            <td style="padding: 10px; color: var(--caution-red); text-align: right;">$4,013,000</td>
+                        </tr>
+                        <tr class="table-row" style="opacity: 0; transform: translateY(10px);">
+                            <td style="padding: 10px;">2018</td>
+                            <td style="padding: 10px;">Majestic Crown / Albany Ave</td>
+                            <td style="padding: 10px;">Queens, Brooklyn, Manhattan</td>
+                            <td style="padding: 10px; color: var(--caution-red); text-align: right;">$4,415,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-family: 'Roboto Mono', monospace; margin-top: 1.5rem;"><b>The Pattern:</b> In these
+                    cases, Alan Waintraub often serves as the lender, the legal counsel of record, and the individual
+                    "personally verifying" the truth of the foreclosure complaints—a circular structure used to bypass
+                    independent verification.</p>
             </div>
 
             <div class="proof-box">
-                <h3>THE LAW</h3>
-                <p>Under New York law, keeping the money created a <b>VENDEE’S LIEN (CPLR 3002(f))</b>. This means they
-                    cannot evict her until every dollar is paid back.</p>
-            </div>
-
-            <div class="proof-box">
-                <h3>THE TRAP</h3>
-                <p>In 2020, attorneys pressured the elderly couple into signing a "stipulation"—a complex legal
-                    agreement to vacate the property—without getting a single dime of their savings back. In December
-                    2025, the Trust returned to evict Mrs. Hung—now a widow.</p>
-            </div>
-
-            <div class="proof-box">
-                <h3>THE PERJURY</h3>
-                <p>In January 2026, despite knowing about the $245,000 lien, the Trust's attorneys told two separate
-                    courts that the money was just "rent" and that Mrs. Hung had no rights to the home.</p>
+                <h3 style="font-family: 'Roboto Mono', monospace;">03 | FEDERAL COMPLIANCE ALERTS</h3>
+                <h4
+                    style="font-family: 'Oswald'; color: var(--off-white); font-size: 1.2rem; margin-bottom: 0.5rem; margin-top: 1rem;">
+                    Corporate Transparency Act (CTA) Violations</h4>
+                <p style="font-family: 'Roboto Mono', monospace; margin-bottom: 1rem;">The 31 U.S.C. § 5336 requires
+                    the disclosure of "True Beneficial Owners" to prevent the misuse of shell companies for unlawful
+                    financial activity.</p>
+                <p style="font-family: 'Roboto Mono', monospace;"><b>The Concern:</b> The use of multiple LLCs (Majestic
+                    Crown, Albany Ave, Landlord Plus) to originate and enforce loans—while concealing the controlling
+                    individual—triggers federal reporting requirements under FinCEN’s jurisdiction.</p>
             </div>
         </div>
     </section>
 
-    <!-- ACT III: THE PATTERN & Action -->
+    <!-- ACT III: ACTION -->
     <section id="act-3">
-        <div class="pattern-box">
-            <h2 class="headline dirty-text" style="color: var(--caution-red); font-size: clamp(2rem, 5vw, 4rem);">The
-                predatory law firm that helps scammers steal homes and evict elders.</h2>
-            <p class="dirty-text"
-                style="font-family: 'Oswald'; font-size: 1.2rem; color: #8c391a; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 1px;">
-                Verify the pattern. Click any case below to view the official court filings for yourself.
-            </p>
-            <ul class="case-list">
-                <li><a href="https://iapps.courts.state.ny.us/nyscef/ViewDocument?docIndex=p7Vv1edxwlBY7MrBNafwTw=="
-                        class="case-link" target="_blank">2347 West 1st Street LLC v. Lati</a></li>
-                <li><a href="https://iapps.courts.state.ny.us/webcivil/FCASeFiledDocsDetail?county_code=Qh6jvaD93sYf8f23eU%2FzIA%3D%3D&txtIndexNo=YoZzLx2Gfkn8%2FaVgl_PLUS_pfgA%3D%3D&showMenu=no&isPreRji=N&civilCase=BtpHKMf73Vo_PLUS_3EIK8LNVJQ%3D%3D"
-                        class="case-link" target="_blank">Ammach v. Armouth-Levy</a></li>
-                <li><a href="https://iapps.courts.state.ny.us/nyscef/DocumentList?docketId=_PLUS_uDgUNxtTnjZ5XoNJDwdFQ==&display=all&courtType=Queens%20County%20Civil%20Court%20-%20Landlord%20and%20Tenant%20Division&resultsPageNum=1"
-                        class="case-link" target="_blank">The Lih Yuh Kuo Family Trust 2012 v. Lao-Teh Hung</a></li>
-                <li><a href="https://iapps.courts.state.ny.us/nyscef/DocumentList?docketId=QUd9dOyRI14QsM4Zr6OX0w==&display=all&courtType=Queens%20County%20Supreme%20Court&resultsPageNum=1"
-                        class="case-link" target="_blank">Dorothy Hung v. The Lih Yuh Kuo Family Trust 2012</a></li>
-            </ul>
-        </div>
-
-        <div id="action-section">
+        <div id="action-section"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; width: 100%;">
             <h2 class="headline dirty-text"
-                style="color: var(--caution-red); font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem;">STOP THE
-                ATTORNEYS</h2>
+                style="color: var(--caution-red); font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem;">04 | FINAL
+                MANDATE: REGULATORY ESCALATION</h2>
             <p
-                style="margin-bottom: 3rem; color: #888; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                Report a pattern of attorney misconduct. One click fires a complaint to the grievance committee and to
-                state
-                elected officials.
+                style="margin-bottom: 3rem; color: #888; max-width: 600px; line-height: 1.6; font-family: 'Roboto Mono', monospace;">
+                Regulatory systems only work when triggered. Use the evidence above to file your reports.
             </p>
 
-            <input type="text" id="user-name" class="input-field" placeholder="ENTER YOUR NAME">
-            <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()">
-                WE NEED YOUR HELP.<br />Tap here to File the GRIEVANCE.
-            </button>
-            <p
-                style="margin-top: 1.5rem; color: #666; font-style: italic; max-width: 500px; text-align: center; margin-left: auto; margin-right: auto;">
-                Your name will be added to a formal judicial grievance against the law firm.
-            </p>
+            <div class="desktop-actions" style="display: flex; flex-direction: column; gap: 3rem; align-items: center;">
+                <div style="text-align: center;">
+                    <div
+                        style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
+                        REPORT 01: NY
+                        DEPARTMENT OF FINANCIAL SERVICES</div>
+                    <div
+                        style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                        File here for unlicensed mortgage banking and usurious loan structures.</div>
+                    <a href="https://myportal.dfs.ny.gov/web/guest-applications/who-we-supervise" target="_blank"
+                        class="emergency-btn dirty-text"
+                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; min-width: 500px; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
+                        [SUBMIT DFS COMPLAINT]
+                    </a>
+                </div>
+
+                <div style="text-align: center;">
+                    <div
+                        style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
+                        REPORT 02:
+                        ATTORNEY GRIEVANCE COMMITTEE</div>
+                    <div
+                        style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                        File here for ethical breaches, fraudulent verifications, and conflicts of interest.</div>
+                    <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()"
+                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; width: 100%; min-width: 500px; max-width: 500px; padding: 1.5rem; box-shadow: none; cursor: pointer; margin: 0 auto;">
+                        [SUBMIT GRIEVANCE]
+                    </button>
+                </div>
+
+                <div style="text-align: center;">
+                    <div
+                        style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
+                        REPORT 03: FINCEN
+                        (TREASURY DEPT)</div>
+                    <div
+                        style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                        File here for potential violations of the Corporate Transparency Act and shell company
+                        concealment.</div>
+                    <a href="mailto:frc@fincen.gov?subject=Potential Corporate Transparency Act Violation Report"
+                        class="emergency-btn dirty-text"
+                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; min-width: 500px; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
+                        [SUBMIT FINCEN REPORT]
+                    </a>
+                </div>
+            </div>
+
             <p id="coalition-signal"
                 style="margin-top: 4rem; font-family: 'Oswald'; color: var(--safety-orange); letter-spacing: 2px; opacity: 0.4;">
                 THE COALITION IS IN THE ROOM.
@@ -538,10 +819,7 @@
         <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="logo-bottom">
     </section>
 
-    <!-- Fast Lane Button -->
-    <button class="fast-lane" id="fast-lane-btn"
-        onclick="document.getElementById('action-section').scrollIntoView({behavior:'smooth'});">SKIP TO ACTION
-        ↓</button>
+
 
     <script>
         const act2 = document.getElementById('act-2');
@@ -632,10 +910,53 @@ ${name}`;
             observer.observe(target);
         }
 
+        // Handle Mobile Sticky Bar visibility
+        function initMobileStickyBar() {
+            const stickyBar = document.querySelector('.mobile-sticky-actions');
+            if (!stickyBar) return;
+
+            if (window.innerWidth <= 900) {
+                stickyBar.style.display = 'flex';
+            } else {
+                stickyBar.style.display = 'none';
+            }
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 900) {
+                    stickyBar.style.display = 'flex';
+                } else {
+                    stickyBar.style.display = 'none';
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             randomizeGrunge();
             pulseSignal();
             initFastLane();
+            initMobileStickyBar();
+
+            // GSAP Animation for Data Table
+            const observerTable = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gsap.to(entry.target.querySelectorAll('.table-row'), {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.6,
+                            stagger: 0.05,
+                            ease: "power2.out"
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            const dataTableContainer = document.querySelector('.data-table-container');
+            if (dataTableContainer) {
+                observerTable.observe(dataTableContainer);
+            }
+
             window.addEventListener('scroll', () => {
                 const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
