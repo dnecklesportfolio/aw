@@ -238,9 +238,9 @@
 
         .quick-action-grid {
             display: grid;
-            grid-template-columns: repeat(3, 33.333%);
+            grid-template-columns: 1fr;
             gap: 1.5rem;
-            max-width: 1000px;
+            max-width: 600px;
             margin: 0 auto;
             border-top: 1px solid #333;
             border-bottom: 2px solid #333;
@@ -576,20 +576,10 @@
 
     <!-- Mobile Sticky Action Bar -->
     <div class="mobile-sticky-actions" style="display: none;">
-        <a href="https://myportal.dfs.ny.gov/web/guest-applications/who-we-supervise" target="_blank"
-            class="emergency-btn dirty-text"
-            style="font-family: 'Roboto Mono', monospace; background: #2c3e50; border: 1px solid #34495e; box-shadow: none;">
-            [DFS]
-        </a>
         <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()"
-            style="font-family: 'Roboto Mono', monospace; background: #8c391a; border: none; box-shadow: none;">
-            [GRIEVANCE]
+            style="font-family: 'Roboto Mono', monospace; background: #8c391a; border: none; box-shadow: none; width: 100%;">
+            [DEMAND AN INVESTIGATION?]
         </button>
-        <a href="mailto:frc@fincen.gov?subject=Potential Corporate Transparency Act Violation Report"
-            class="emergency-btn dirty-text"
-            style="font-family: 'Roboto Mono', monospace; background: #2c3e50; border: 1px solid #34495e; box-shadow: none;">
-            [FINCEN]
-        </a>
     </div>
     <img src="assets/logo.jpg" alt="Stop Deed Theft Logo" class="logo-top">
 
@@ -633,20 +623,6 @@
             <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
                 <div
                     style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
-                    UNLICENSED ACTIVITY</div>
-                <div
-                    style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 1.5rem; line-height: 1.4;">
-                    File here for unlicensed mortgage banking and usurious loan structures.
-                </div>
-                <a href="https://myportal.dfs.ny.gov/web/guest-applications/who-we-supervise" target="_blank"
-                    class="emergency-btn dirty-text"
-                    style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; padding: 1.2rem; box-shadow: none; border-radius: 8px;">
-                    [REPORT TO DFS]
-                </a>
-            </div>
-            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                <div
-                    style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
                     ATTORNEY MISCONDUCT</div>
                 <div
                     style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 1.5rem; line-height: 1.4;">
@@ -654,22 +630,8 @@
                 </div>
                 <button onclick="dispatchUltimatum()" class="emergency-btn dirty-text"
                     style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; width: 100%; padding: 1.2rem; box-shadow: none; cursor: pointer; border-radius: 8px;">
-                    [FILE GRIEVANCE]
+                    [DEMAND AN INVESTIGATION?]
                 </button>
-            </div>
-            <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-                <div
-                    style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
-                    CORPORATE TRANSPARENCY ACT</div>
-                <div
-                    style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 1.5rem; line-height: 1.4;">
-                    File here for potential violations of the Corporate Transparency Act and shell company concealment.
-                </div>
-                <a href="mailto:frc@fincen.gov?subject=Potential Corporate Transparency Act Violation Report"
-                    class="emergency-btn dirty-text"
-                    style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; padding: 1.2rem; box-shadow: none; border-radius: 8px;">
-                    [NOTIFY FINCEN]
-                </a>
             </div>
         </div>
     </div>
@@ -787,46 +749,19 @@
                 <div style="text-align: center;">
                     <div
                         style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
-                        REPORT 01: NY
-                        DEPARTMENT OF FINANCIAL SERVICES</div>
-                    <div
-                        style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
-                        File here for unlicensed mortgage banking and usurious loan structures.</div>
-                    <a href="https://myportal.dfs.ny.gov/web/guest-applications/who-we-supervise" target="_blank"
-                        class="emergency-btn dirty-text"
-                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
-                        [SUBMIT DFS COMPLAINT]
-                    </a>
-                </div>
-
-                <div style="text-align: center;">
-                    <div
-                        style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
-                        REPORT 02:
                         ATTORNEY GRIEVANCE COMMITTEE</div>
                     <div
                         style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
                         File here for "Attorney Misconduct", fraudulent verifications, and conflicts of interest.</div>
                     <button class="emergency-btn dirty-text" onclick="dispatchUltimatum()"
                         style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; cursor: pointer; margin: 0 auto;">
-                        [SUBMIT GRIEVANCE]
+                        [DEMAND AN INVESTIGATION?]
                     </button>
-                </div>
-
-                <div style="text-align: center;">
-                    <div
-                        style="font-family: 'Oswald'; color: var(--caution-red); font-size: 1.2rem; text-transform: uppercase;">
-                        REPORT 03: FINCEN
-                        (TREASURY DEPT)</div>
-                    <div
-                        style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
-                        File here for potential violations of the Corporate Transparency Act and shell company
-                        concealment.</div>
-                    <a href="mailto:frc@fincen.gov?subject=Potential Corporate Transparency Act Violation Report"
-                        class="emergency-btn dirty-text"
-                        style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; text-decoration: none; display: flex; justify-content: center; align-items: center; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; margin: 0 auto;">
-                        [SUBMIT FINCEN REPORT]
-                    </a>
+                    <p
+                        style="margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #aaa; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+                        Public accountability depends on public participation. Regulatory systems only work when
+                        enforced.
+                    </p>
                 </div>
             </div>
 
