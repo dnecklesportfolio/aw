@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://alanwaintraub.netlify.app/">
     <meta property="og:type" content="website">
     <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&family=Inter:wght@400;700;900&family=Roboto+Mono:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@700;900&family=Inter:wght@400;700;900&family=Roboto+Mono:wght@400;700&family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;600&display=swap"
         rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
@@ -38,6 +38,82 @@
             overflow-x: hidden;
             width: 100%;
             max-width: 100%;
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            width: 100%;
+        }
+
+        .card {
+            background: #141414;
+            border: 1px solid #1e1e1e;
+            border-left: 3px solid #c0392b;
+            padding: 20px 18px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 12px 8px;
+            position: relative;
+            transition: background 0.15s;
+        }
+
+        .card:hover {
+            background: #191919;
+        }
+
+        .year-badge {
+            font-family: 'Space Mono', 'Roboto Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            grid-column: 1;
+            grid-row: 1;
+            align-self: start;
+        }
+
+        .value {
+            font-family: 'Space Mono', 'Roboto Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: #e74c3c;
+            grid-column: 2;
+            grid-row: 1;
+            text-align: right;
+            align-self: start;
+        }
+
+        .label {
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #444;
+            font-family: 'Space Mono', 'Roboto Mono', monospace;
+            margin-bottom: 3px;
+        }
+
+        .field {
+            grid-column: 1 / -1;
+        }
+
+        .field-value {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.4;
+            font-family: 'DM Sans', 'Inter', sans-serif;
+        }
+
+        .field-value strong {
+            color: #ddd;
+            font-weight: 600;
+        }
+
+        .divider {
+            grid-column: 1 / -1;
+            height: 1px;
+            background: #1e1e1e;
         }
 
         body {
@@ -527,56 +603,6 @@
                 padding: 1.5rem 1rem;
             }
 
-            .data-table-container table {
-                min-width: 100% !important;
-                font-size: 0.9rem !important;
-                display: block;
-            }
-
-            .data-table-container thead {
-                display: none;
-                /* Hide header row on mobile */
-            }
-
-            .data-table-container tbody {
-                display: block;
-                width: 100%;
-            }
-
-            .data-table-container tr {
-                display: block;
-                border: 1px solid #333;
-                margin-bottom: 1rem;
-                padding: 10px;
-                background-color: rgba(255, 255, 255, 0.02);
-                border-radius: 4px;
-            }
-
-            .data-table-container td {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 8px 0 !important;
-                border-bottom: 1px dotted #333;
-                white-space: normal !important;
-                text-align: right !important;
-            }
-
-            .data-table-container td:last-child {
-                border-bottom: none;
-            }
-
-            /* Add labels before the actual data on mobile */
-            .data-table-container td::before {
-                content: attr(data-label);
-                font-family: 'Oswald', sans-serif;
-                font-size: 0.75rem;
-                color: #888;
-                text-align: left;
-                padding-right: 15px;
-                flex-shrink: 0;
-            }
-
             .headline {
                 font-size: clamp(3rem, 12vw, 5rem);
             }
@@ -747,52 +773,46 @@
                 <p style="font-family: 'Roboto Mono', monospace; margin-bottom: 1rem;"><b>Case Study: $19M+ in
                         Non-Compliant Filings</b><br>The following data reflects property seizures and mortgage
                     originations executed by Waintraub-controlled entities.</p>
-                <div style="width: 100%; overflow-x: auto;">
-                    <table
-                        style="width: 100%; min-width: 600px; border-collapse: collapse; margin-top: 1rem; font-family: 'Roboto Mono', monospace; text-align: left; background-color: rgba(255,255,255,0.05);">
-                        <thead>
-                            <tr style="border-bottom: 2px solid var(--safety-orange);">
-                                <th style="padding: 10px; white-space: nowrap;">YEAR</th>
-                                <th style="padding: 10px; white-space: nowrap;">ENTITY OF RECORD</th>
-                                <th style="padding: 10px; white-space: nowrap;">PRIMARY JURISDICTION</th>
-                                <th style="padding: 10px; text-align: right; white-space: nowrap;">VALUE IDENTIFIED</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="table-row"
-                                style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
-                                <td data-label="YEAR" style="padding: 10px;">2023</td>
-                                <td data-label="ENTITY OF RECORD" style="padding: 10px;">Majestic Crown / Landlord Plus
-                                </td>
-                                <td data-label="PRIMARY JURISDICTION" style="padding: 10px;">Bronx, Manhattan, Queens
-                                </td>
-                                <td data-label="VALUE IDENTIFIED"
-                                    style="padding: 10px; color: var(--caution-red); text-align: right; white-space: nowrap;">
-                                    $10,758,000</td>
-                            </tr>
-                            <tr class="table-row"
-                                style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
-                                <td data-label="YEAR" style="padding: 10px;">2019</td>
-                                <td data-label="ENTITY OF RECORD" style="padding: 10px;">Majestic Crown / Albany Ave
-                                </td>
-                                <td data-label="PRIMARY JURISDICTION" style="padding: 10px;">Bronx, Queens, Brooklyn
-                                </td>
-                                <td data-label="VALUE IDENTIFIED"
-                                    style="padding: 10px; color: var(--caution-red); text-align: right; white-space: nowrap;">
-                                    $4,013,000</td>
-                            </tr>
-                            <tr class="table-row" style="opacity: 0; transform: translateY(10px);">
-                                <td data-label="YEAR" style="padding: 10px;">2018</td>
-                                <td data-label="ENTITY OF RECORD" style="padding: 10px;">Majestic Crown / Albany Ave
-                                </td>
-                                <td data-label="PRIMARY JURISDICTION" style="padding: 10px;">Queens, Brooklyn, Manhattan
-                                </td>
-                                <td data-label="VALUE IDENTIFIED"
-                                    style="padding: 10px; color: var(--caution-red); text-align: right; white-space: nowrap;">
-                                    $4,415,000</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="cards" style="margin-top: 2rem;">
+                    <div class="card table-row" style="opacity: 0; transform: translateY(10px);">
+                        <div class="year-badge">2023</div>
+                        <div class="value">$10,758,000</div>
+                        <div class="divider"></div>
+                        <div class="field">
+                            <div class="label">Entity of Record</div>
+                            <div class="field-value"><strong>Majestic Crown / Landlord Plus</strong></div>
+                        </div>
+                        <div class="field">
+                            <div class="label">Primary Jurisdiction</div>
+                            <div class="field-value">Bronx, Manhattan, Queens</div>
+                        </div>
+                    </div>
+                    <div class="card table-row" style="opacity: 0; transform: translateY(10px);">
+                        <div class="year-badge">2019</div>
+                        <div class="value">$4,013,000</div>
+                        <div class="divider"></div>
+                        <div class="field">
+                            <div class="label">Entity of Record</div>
+                            <div class="field-value"><strong>Majestic Crown / Albany Ave</strong></div>
+                        </div>
+                        <div class="field">
+                            <div class="label">Primary Jurisdiction</div>
+                            <div class="field-value">Bronx, Queens, Brooklyn</div>
+                        </div>
+                    </div>
+                    <div class="card table-row" style="opacity: 0; transform: translateY(10px);">
+                        <div class="year-badge">2018</div>
+                        <div class="value">$4,415,000</div>
+                        <div class="divider"></div>
+                        <div class="field">
+                            <div class="label">Entity of Record</div>
+                            <div class="field-value"><strong>Majestic Crown / Albany Ave</strong></div>
+                        </div>
+                        <div class="field">
+                            <div class="label">Primary Jurisdiction</div>
+                            <div class="field-value">Queens, Brooklyn, Manhattan</div>
+                        </div>
+                    </div>
                 </div>
                 <p style="font-family: 'Roboto Mono', monospace; margin-top: 1.5rem;"><b>The Pattern:</b> In these
                     cases, Alan Waintraub often serves as the lender, the legal counsel of record, and the individual
