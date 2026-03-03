@@ -518,6 +518,27 @@
                 height: 50vh;
             }
 
+            .content-block {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .proof-box {
+                padding: 1.5rem 1rem;
+            }
+
+            .data-table-container table {
+                min-width: 100% !important;
+                font-size: 0.75rem !important;
+            }
+
+            .data-table-container th,
+            .data-table-container td {
+                padding: 8px 4px !important;
+                white-space: normal !important;
+                word-break: break-word;
+            }
+
             .headline {
                 font-size: clamp(3rem, 12vw, 5rem);
             }
@@ -687,39 +708,47 @@
                 <p style="font-family: 'Roboto Mono', monospace; margin-bottom: 1rem;"><b>Case Study: $19M+ in
                         Non-Compliant Filings</b><br>The following data reflects property seizures and mortgage
                     originations executed by Waintraub-controlled entities.</p>
-                <table
-                    style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-family: 'Roboto Mono', monospace; text-align: left; background-color: rgba(255,255,255,0.05);">
-                    <thead>
-                        <tr style="border-bottom: 2px solid var(--safety-orange);">
-                            <th style="padding: 10px;">YEAR</th>
-                            <th style="padding: 10px;">ENTITY OF RECORD</th>
-                            <th style="padding: 10px;">PRIMARY JURISDICTION</th>
-                            <th style="padding: 10px; text-align: right;">VALUE IDENTIFIED</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="table-row"
-                            style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
-                            <td style="padding: 10px;">2023</td>
-                            <td style="padding: 10px;">Majestic Crown / Landlord Plus</td>
-                            <td style="padding: 10px;">Bronx, Manhattan, Queens</td>
-                            <td style="padding: 10px; color: var(--caution-red); text-align: right;">$10,758,000</td>
-                        </tr>
-                        <tr class="table-row"
-                            style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
-                            <td style="padding: 10px;">2019</td>
-                            <td style="padding: 10px;">Majestic Crown / Albany Ave</td>
-                            <td style="padding: 10px;">Bronx, Queens, Brooklyn</td>
-                            <td style="padding: 10px; color: var(--caution-red); text-align: right;">$4,013,000</td>
-                        </tr>
-                        <tr class="table-row" style="opacity: 0; transform: translateY(10px);">
-                            <td style="padding: 10px;">2018</td>
-                            <td style="padding: 10px;">Majestic Crown / Albany Ave</td>
-                            <td style="padding: 10px;">Queens, Brooklyn, Manhattan</td>
-                            <td style="padding: 10px; color: var(--caution-red); text-align: right;">$4,415,000</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div style="width: 100%; overflow-x: auto;">
+                    <table
+                        style="width: 100%; min-width: 600px; border-collapse: collapse; margin-top: 1rem; font-family: 'Roboto Mono', monospace; text-align: left; background-color: rgba(255,255,255,0.05);">
+                        <thead>
+                            <tr style="border-bottom: 2px solid var(--safety-orange);">
+                                <th style="padding: 10px; white-space: nowrap;">YEAR</th>
+                                <th style="padding: 10px; white-space: nowrap;">ENTITY OF RECORD</th>
+                                <th style="padding: 10px; white-space: nowrap;">PRIMARY JURISDICTION</th>
+                                <th style="padding: 10px; text-align: right; white-space: nowrap;">VALUE IDENTIFIED</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-row"
+                                style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
+                                <td style="padding: 10px;">2023</td>
+                                <td style="padding: 10px;">Majestic Crown / Landlord Plus</td>
+                                <td style="padding: 10px;">Bronx, Manhattan, Queens</td>
+                                <td
+                                    style="padding: 10px; color: var(--caution-red); text-align: right; white-space: nowrap;">
+                                    $10,758,000</td>
+                            </tr>
+                            <tr class="table-row"
+                                style="border-bottom: 1px solid #333; opacity: 0; transform: translateY(10px);">
+                                <td style="padding: 10px;">2019</td>
+                                <td style="padding: 10px;">Majestic Crown / Albany Ave</td>
+                                <td style="padding: 10px;">Bronx, Queens, Brooklyn</td>
+                                <td
+                                    style="padding: 10px; color: var(--caution-red); text-align: right; white-space: nowrap;">
+                                    $4,013,000</td>
+                            </tr>
+                            <tr class="table-row" style="opacity: 0; transform: translateY(10px);">
+                                <td style="padding: 10px;">2018</td>
+                                <td style="padding: 10px;">Majestic Crown / Albany Ave</td>
+                                <td style="padding: 10px;">Queens, Brooklyn, Manhattan</td>
+                                <td
+                                    style="padding: 10px; color: var(--caution-red); text-align: right; white-space: nowrap;">
+                                    $4,415,000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <p style="font-family: 'Roboto Mono', monospace; margin-top: 1.5rem;"><b>The Pattern:</b> In these
                     cases, Alan Waintraub often serves as the lender, the legal counsel of record, and the individual
                     "personally verifying" the truth of the foreclosure complaints—a circular structure used to bypass
