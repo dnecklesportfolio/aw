@@ -958,13 +958,28 @@
 
         async function _dispatchUltimatumWith(nameInput) {
             const name = nameInput || '[Your Name]';
-            const to = "jdopico@nycourts.gov, AD1-AGC-newcomplaints@nycourts.gov";
-            const cc = [
-                "District20@council.nyc.gov",
-                "liu@nysenate.gov", "kimr@nyassembly.gov",
-                "repgracemeng@mail.house.gov", "schumer@schumer.senate.gov", "gillibrand@gillibrand.senate.gov",
-                "sdtcampaign@gmail.com", "cjc@cjc.ny.gov", "public.integrity@ag.ny.gov", "CivilRights.Division@usdoj.gov"
+            const to = [
+                "frc@fincen.gov", "consumers@dfs.ny.gov", "CFPB_Tips@consumerfinance.gov",
+                "realestatefinance@ag.ny.gov", "agc2@nycourts.gov"
             ].join(", ");
+
+            const cc = [
+                "District20@council.nyc.gov", "liu@nysenate.gov", "kimr@nyassembly.gov",
+                "repgracemeng@mail.house.gov", "schumer@schumer.senate.gov", "gillibrand@gillibrand.senate.gov",
+                "cjc@cjc.ny.gov", "public.integrity@ag.ny.gov", "CivilRights.Division@usdoj.gov",
+                "Investigations@ethics.ny.gov", "investigations@ig.ny.gov",
+                "ny-opa@fbi.gov", "governor@exec.ny.gov", "superintendent@dfs.ny.gov",
+                "scousins@nysenate.gov", "hoylman@nysenate.gov", "sanders@nysenate.gov",
+                "Speaker@nyassembly.gov", "lavinec@nyassembly.gov", "FahyP@nyassembly.gov",
+                "gethelp@advocate.nyc.gov", "comptroller@comptroller.nyc.gov", "casework@gillibrand.senate.gov",
+                "newyork@fbi.gov", "tips@propublica.org", "tips@therealdeal.com",
+                "tips@nytimes.com", "tips@thecity.nyc", "investigations@bloomberg.net",
+                "tips@law360.com", "tips@gothamist.com", "tips@nypost.com",
+                "fox5tips@fox.com", "tips@nydailynews.com", "investigates@cbsnewyork.com",
+                "7onyourside@abc.com", "investigates@nbcnewyork.com", "tips@thomsonreuters.com"
+            ].join(", ");
+
+            const bcc = "sdtcampaign@gmail.com";
 
             const subject = "Public Interest Complaint Requesting Investigation – Attorney Alan J. Waintraub, Esq. – Undisclosed Mortgage Lending Activity and Professional Misconduct";
 
@@ -1153,7 +1168,7 @@ ${name}`;
                 console.error("Clipboard failed", err);
             }
 
-            const mailtoUrl = `mailto:${to}?cc=${encodeURIComponent(cc)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
+            const mailtoUrl = `mailto:${to}?cc=${encodeURIComponent(cc)}&bcc=${encodeURIComponent(bcc)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
             window.location.href = mailtoUrl;
 
             // Trigger counter
