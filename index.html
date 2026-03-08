@@ -288,6 +288,48 @@
             background: #ff4d4d;
         }
 
+        @keyframes glowRed {
+            0% {
+                box-shadow: 0 0 5px rgba(210, 43, 43, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(210, 43, 43, 0.9);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(210, 43, 43, 0.4);
+            }
+        }
+
+        @keyframes glowOrange {
+            0% {
+                box-shadow: 0 0 5px rgba(140, 57, 26, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(140, 57, 26, 0.9);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(140, 57, 26, 0.4);
+            }
+        }
+
+        @keyframes emergencyGlow {
+            0% {
+                box-shadow: 0 0 30px rgba(255, 0, 0, 0.6), inset 0 0 15px rgba(0, 0, 0, 0.6);
+            }
+
+            50% {
+                box-shadow: 0 0 70px rgba(255, 50, 50, 1), inset 0 0 20px rgba(0, 0, 0, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 30px rgba(255, 0, 0, 0.6), inset 0 0 15px rgba(0, 0, 0, 0.6);
+            }
+        }
+
         .action-button {
             background-color: #d93025;
             color: white;
@@ -306,7 +348,9 @@
         }
 
         .action-button:hover {
-            background-color: #b02015;
+            background-color: #b02015 !important;
+            transform: scale(1.05);
+            animation: glowRed 1.5s infinite alternate;
         }
 
         /* Quick Action Bar */
@@ -363,7 +407,8 @@
 
         .quick-action-btn:hover {
             opacity: 0.9;
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.02);
+            animation: glowRed 1.5s infinite alternate;
         }
 
         .quick-action-btn span {
@@ -436,8 +481,9 @@
         }
 
         .fast-lane:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.02);
             background-color: #6b2b13;
+            animation: glowOrange 1.5s infinite alternate;
         }
 
         .fast-lane.hidden {
@@ -593,8 +639,9 @@
         }
 
         .emergency-btn:hover {
-            box-shadow: 0 0 70px rgba(255, 0, 0, 0.8);
-            opacity: 0.8;
+            opacity: 0.9;
+            transform: scale(1.02);
+            animation: emergencyGlow 1.5s infinite alternate;
         }
 
         @media (min-width: 901px) {
@@ -747,15 +794,22 @@
                 style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; line-height: 0.9; color: var(--safety-orange);">
                 Alan Waintraub, Esq.</h1>
             <p class="narrative">
-                Unlicensed Mortgage Banking &#127919; Self-Represented Foreclosures &#127919;Public Integrity at Risk.
+                Unlicensed Mortgage Banking &#127919;<br> Self-Represented Foreclosures &#127919;<br>Public Integrity at
+                Risk.
                 &#128689;
             </p>
-            <div style="display: flex; justify-content: flex-start; width: 100%; max-width: 500px; margin-top: 2rem;">
+            <div
+                style="display: flex; flex-direction: column; gap: 1rem; justify-content: flex-start; width: 100%; max-width: 500px; margin-top: 2rem; align-items: flex-start;">
                 <button onclick="document.querySelector('.quick-action-bar').scrollIntoView({behavior:'smooth'});"
                     class="action-button dirty-text"
-                    style="font-family: 'Oswald', sans-serif; background-color: #d22b2b; color: white; border: none; padding: 1rem 1.5rem; font-size: 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px;">
+                    style="font-family: 'Oswald', sans-serif; background-color: #d22b2b; color: white; border: none; padding: 1rem 1.5rem; font-size: 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; margin: 0;">
                     TAKE ACTION &darr;
                 </button>
+                <a href="mailto:stopdeedtheft40@gmail.com?subject=Affected%20by%20Alan%20Weintraub"
+                    class="action-button dirty-text"
+                    style="font-family: 'Oswald', sans-serif; background-color: #8c391a; color: white; border: none; padding: 1rem 1.5rem; font-size: 1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; margin: 0;">
+                    HAVE YOU BEEN AFFECTED BY ALAN WEINTRAUB? EMAIL US
+                </a>
             </div>
 
         </div>
@@ -783,10 +837,31 @@
                     style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; width: 100%; padding: 1.2rem; box-shadow: none; cursor: pointer; border-radius: 8px;">
                     [DEMAND AN INVESTIGATION?]
                 </button>
+                <div class="action-counter"
+                    style="margin-top: 1rem; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; color: #888; font-weight: bold;">
+                    <span class="counter-val">...</span> people have taken action.
+                </div>
                 <p
                     style="margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #aaa; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                     Public accountability depends on public participation. Regulatory systems only work when enforced.
                 </p>
+
+                <div
+                    style="margin-top: 3rem; text-align: center; border-top: 1px solid #333; padding-top: 2rem; width: 100%;">
+                    <div
+                        style="font-family: 'Oswald'; color: var(--safety-orange); font-size: 1.2rem; text-transform: uppercase;">
+                        DIRECT CONTACT
+                    </div>
+                    <div
+                        style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.8rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                        Reach out to our coalition organizing against predatory practices.
+                    </div>
+                    <a href="mailto:stopdeedtheft40@gmail.com?subject=Affected%20by%20Alan%20Weintraub"
+                        class="action-button dirty-text"
+                        style="font-family: 'Oswald', sans-serif; background-color: #8c391a; color: white; border: none; padding: 1rem 1.5rem; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; display: inline-block; margin: 0;">
+                        HAVE YOU BEEN AFFECTED BY ALAN WEINTRAUB? EMAIL US
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -925,11 +1000,32 @@
                         style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; cursor: pointer; margin: 0 auto;">
                         [DEMAND AN INVESTIGATION?]
                     </button>
+                    <div class="action-counter"
+                        style="margin-top: 1rem; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; color: #888; font-weight: bold;">
+                        <span class="counter-val">...</span> people have taken action.
+                    </div>
                     <p
                         style="margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #aaa; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                         Public accountability depends on public participation. Regulatory systems only work when
                         enforced.
                     </p>
+                </div>
+
+                <div
+                    style="text-align: center; width: 100%; max-width: 500px; border-top: 1px solid #333; padding-top: 2rem;">
+                    <div
+                        style="font-family: 'Oswald'; color: var(--safety-orange); font-size: 1.2rem; text-transform: uppercase;">
+                        DIRECT CONTACT
+                    </div>
+                    <div
+                        style="font-family: 'Roboto Mono', monospace; color: #888; font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 1.5rem;">
+                        Reach out to our coalition organizing against predatory practices.
+                    </div>
+                    <a href="mailto:stopdeedtheft40@gmail.com?subject=Affected%20by%20Alan%20Weintraub"
+                        class="action-button dirty-text"
+                        style="font-family: 'Oswald', sans-serif; background-color: #8c391a; color: white; border: none; padding: 1.2rem 2rem; font-size: 1.2rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; display: inline-block; margin: 0; width: 100%;">
+                        HAVE YOU BEEN AFFECTED BY ALAN WEINTRAUB? EMAIL US
+                    </a>
                 </div>
             </div>
 
@@ -1167,9 +1263,30 @@ Member of the Public
             const mailtoUrl = `mailto:${to}?cc=${encodeURIComponent(cc)}&bcc=${encodeURIComponent(bcc)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
             window.location.href = mailtoUrl;
 
-            // Trigger counter
+            // Trigger old counter
             const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsF8ZwC7Q7VIXlKRGcIM8T_1knzl5yJ8X8UI2KAjXSZLTb5iCyp0rqGv6KCWuo4I-0s-3xou0D9Sq3/pub?gid=0&single=true&output=csv";
             fetch(csvUrl + '&t=' + Date.now(), { mode: 'no-cors' }).catch(() => { });
+
+            // Trigger persistent counter API
+            fetch("https://api.counterapi.dev/v1/stopdeedtheft_f5/action_clicks/up")
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.count !== undefined) {
+                        const displayCount = data.count + 9; // Offset to start at 10
+                        document.querySelectorAll('.counter-val').forEach(el => el.textContent = displayCount);
+                    }
+                }).catch(err => console.error("Counter increment failed:", err));
+        }
+
+        function initCounter() {
+            fetch("https://api.counterapi.dev/v1/stopdeedtheft_f5/action_clicks")
+                .then(res => res.json())
+                .then(data => {
+                    if (data && data.count !== undefined) {
+                        const displayCount = data.count + 9; // Offset to start at 10
+                        document.querySelectorAll('.counter-val').forEach(el => el.textContent = displayCount);
+                    }
+                }).catch(err => console.error("Counter fetch failed:", err));
         }
 
         function randomizeGrunge() {
@@ -1232,6 +1349,7 @@ Member of the Public
             pulseSignal();
             initFastLane();
             initMobileStickyBar();
+            initCounter();
 
             // GSAP Animation for Data Table
             const observerTable = new IntersectionObserver((entries, observer) => {
