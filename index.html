@@ -837,10 +837,6 @@
                     style="font-family: 'Roboto Mono', monospace; font-size: 1.25rem; width: 100%; padding: 1.2rem; box-shadow: none; cursor: pointer; border-radius: 8px;">
                     [DEMAND AN INVESTIGATION?]
                 </button>
-                <div class="action-counter"
-                    style="margin-top: 1rem; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; color: #888; font-weight: bold;">
-                    <span class="counter-val">...</span> people have taken action.
-                </div>
                 <p
                     style="margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #aaa; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                     Public accountability depends on public participation. Regulatory systems only work when enforced.
@@ -1000,10 +996,6 @@
                         style="font-family: 'Roboto Mono', monospace; font-size: 1.5rem; width: 100%; max-width: 500px; padding: 1.5rem; box-shadow: none; cursor: pointer; margin: 0 auto;">
                         [DEMAND AN INVESTIGATION?]
                     </button>
-                    <div class="action-counter"
-                        style="margin-top: 1rem; font-family: 'Roboto Mono', monospace; font-size: 0.9rem; color: #888; font-weight: bold;">
-                        <span class="counter-val">...</span> people have taken action.
-                    </div>
                     <p
                         style="margin-top: 1.5rem; font-family: 'Inter', sans-serif; font-size: 0.95rem; color: #aaa; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.5;">
                         Public accountability depends on public participation. Regulatory systems only work when
@@ -1266,27 +1258,6 @@ Member of the Public
             // Trigger old counter
             const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsF8ZwC7Q7VIXlKRGcIM8T_1knzl5yJ8X8UI2KAjXSZLTb5iCyp0rqGv6KCWuo4I-0s-3xou0D9Sq3/pub?gid=0&single=true&output=csv";
             fetch(csvUrl + '&t=' + Date.now(), { mode: 'no-cors' }).catch(() => { });
-
-            // Trigger persistent counter API
-            fetch("https://api.counterapi.dev/v1/stopdeedtheft_f5/action_clicks/up")
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.count !== undefined) {
-                        const displayCount = data.count + 9; // Offset to start at 10
-                        document.querySelectorAll('.counter-val').forEach(el => el.textContent = displayCount);
-                    }
-                }).catch(err => console.error("Counter increment failed:", err));
-        }
-
-        function initCounter() {
-            fetch("https://api.counterapi.dev/v1/stopdeedtheft_f5/action_clicks")
-                .then(res => res.json())
-                .then(data => {
-                    if (data && data.count !== undefined) {
-                        const displayCount = data.count + 9; // Offset to start at 10
-                        document.querySelectorAll('.counter-val').forEach(el => el.textContent = displayCount);
-                    }
-                }).catch(err => console.error("Counter fetch failed:", err));
         }
 
         function randomizeGrunge() {
@@ -1349,7 +1320,6 @@ Member of the Public
             pulseSignal();
             initFastLane();
             initMobileStickyBar();
-            initCounter();
 
             // GSAP Animation for Data Table
             const observerTable = new IntersectionObserver((entries, observer) => {
